@@ -117,13 +117,28 @@ const String& getName() const;
 
 // defined on FrameRateCounter (derived)
 void start();
+void startFrom(const String& name, const double from_sec);
 void stop();
+bool play(const String& name);
+void pause(const String& name);
 void restart();
 bool isRunning() const;
+bool isPausing(const String& name) const;
+bool isStopping(const String& name) const;
 double usec();
 double msec();
 double sec();
 double frame();
+int64_t usec64(const String& name);
+double usec(const String& name);
+double msec(const String& name);
+double sec(const String& name);
+double getDuration(const String& name) const;
+double getRemainingTime(const String& name);
+double getRemainingLife(const String& name);
+void setOffset(const String& name, const double sec);
+void addOffset(const String& name, const double sec);
+void setTime(const String& name, const double sec);
 void setFrameRate(const double rate);
 double getFrameRate() const;
 ```
