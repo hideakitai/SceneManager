@@ -71,6 +71,17 @@ public:
         return false;
     }
 
+    bool startFrom(const String& name, const double from_sec)
+    {
+        auto s = getSceneByName(name);
+        if (s)
+        {
+            s->startFrom(from_sec);
+            return true;
+        }
+        return false;
+    }
+
     void update()
     {
         for (auto& s : scenes)
@@ -95,6 +106,28 @@ public:
         {
             s->stop();
             s->callUpdate();
+            return true;
+        }
+        return false;
+    }
+
+    bool play(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s)
+        {
+            s->play();
+            return true;
+        }
+        return false;
+    }
+
+    bool pause(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s)
+        {
+            s->pause();
             return true;
         }
         return false;
@@ -149,6 +182,20 @@ public:
         return false;
     }
 
+    bool isPausing(const String& name) const
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->isPausing();
+        return false;
+    }
+
+    bool isStopping(const String& name) const
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->isStopping();
+        return false;
+    }
+
     bool isNext(const String& name) const
     {
         auto s = getSceneByName(name);
@@ -180,6 +227,75 @@ public:
         auto s = getSceneByName(name);
         if (s) return s->frame();
         else   return 0.;
+    }
+
+    int64_t usec64(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->usec64();
+        return 0;
+    }
+
+    double usec(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->usec();
+        return 0.;
+    }
+
+    double msec(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->msec();
+        return 0.;
+    }
+
+    double sec(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->sec();
+        return 0.;
+    }
+
+
+    double getDuration(const String& name) const
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->getDuration();
+        return 0.;
+    }
+
+    double getRemainingTime(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->getRemainingTime();
+        return 0.;
+    }
+
+    double getRemainingLife(const String& name)
+    {
+        auto s = getSceneByName(name);
+        if (s) return s->getRemainingLife();
+        return 0.;
+    }
+
+
+    void setOffset(const String& name, const double sec)
+    {
+        auto s = getSceneByName(name);
+        if (s) s->setOffsetSec(sec);
+    }
+
+    void addOffset(const String& name, const double sec)
+    {
+        auto s = getSceneByName(name);
+        if (s) s->addOffsetSec(sec);
+    }
+
+    void setTime(const String& name, const double sec)
+    {
+        auto s = getSceneByName(name);
+        if (s) s->setTimeSec(sec);
     }
 
     void setFrameRate(const String& name, float fps)
