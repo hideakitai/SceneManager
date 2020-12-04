@@ -24,9 +24,9 @@ public:
     Base(const String& name, const double fps) : FrameRateCounter(fps), name(name) {};
     Base(const Base&) = default;
     Base& operator= (const Base&) = default;
-    Base(Base&&) noexcept = default;
-    Base& operator = (Base&&) noexcept = default;
-    virtual ~Base() noexcept = default;
+    Base(Base&&) = default;
+    Base& operator= (Base&&) = default;
+    virtual ~Base() = default;
 
     virtual void begin() {};
     virtual void enter() {};
