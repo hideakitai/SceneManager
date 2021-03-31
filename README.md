@@ -1,3 +1,8 @@
+
+## Deprecated
+
+This library has integrated to [TaskManager](https://github.com/hideakitai/TaskManager). Please use TaskManger insted.
+
 # SceneManager
 
 cooperative multi-scene manager for Arduino
